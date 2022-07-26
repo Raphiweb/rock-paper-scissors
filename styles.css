@@ -1,0 +1,75 @@
+/* button design */
+button {
+  width: 175px;
+  height: 175px;
+  border: 15px solid rgba(255, 255, 255, 0);
+  border-radius: 100px;
+  transition: 0.075s ease;
+  margin: 10px;
+  padding: 0;
+}
+
+button:active {
+  transform: scale(1.1);
+  border: 10px solid rgba(255, 255, 0, 0.85);
+}
+
+.rock {
+  background-image: url(/images/rock.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.paper {
+  background-image: url(/images/paper.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.scissors {
+  background-image: url(/images/scissors.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/* */
+
+body {
+  background-color: #1a1a1b;
+  color: rgb(215, 218, 220);
+  text-align: center;
+}
+
+.computer {
+  min-height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arena {
+  height: 15vh;
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+.text {
+  width: 100vw;
+}
+
+.counter {
+  background-color: red;
+  width: 200px;
+  height: 50px;
+}
+
+.player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 30vh;
+}
