@@ -80,13 +80,13 @@ scissors.appendChild(scissorsImg);
 
 function game() {
   if (computerChoice == "rock") {
-    removeChild();
+    removeChildFunc();
     document.querySelector(".computer").appendChild(rock);
   } else if (computerChoice == "paper") {
-    removeChild();
+    removeChildFunc();
     document.querySelector(".computer").appendChild(paper);
   } else {
-    removeChild();
+    removeChildFunc();
     document.querySelector(".computer").appendChild(scissors);
   }
 }
@@ -106,7 +106,7 @@ function scissorsFunc() {
   oneRound();
 }
 
-function removeChild() {
+function removeChildFunc() {
   document.querySelector(".computer").innerText = "";
 }
 //
@@ -174,7 +174,7 @@ winScreen.appendChild(repeatButtonWin);
 loseScreen.appendChild(repeatButtonLose);
 
 function endGame() {
-  if (playerCounter + computerCounter === 5) {
+  if (playerCounter === 5 || computerCounter === 5) {
     if (playerCounter > computerCounter) {
       document.body.prepend(winScreen);
     } else if (playerCounter < computerCounter) {

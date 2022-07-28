@@ -95,6 +95,10 @@ h1 {
   font-size: 36px;
 }
 
+h2 span {
+  font-style: italic;
+}
+
 .computer {
   height: 30vh;
   display: flex;
