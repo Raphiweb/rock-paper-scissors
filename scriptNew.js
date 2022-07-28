@@ -19,54 +19,72 @@ function oneRound() {
     console.log("You win! Rock beats Scissors!");
     playerCounter++;
     updateStats();
-    return "You win! Rock beats Scissors!";
+    arenaTextFill("You win! Rock beats Scissors!");
   } else if (playerChoice == "paper" && computerChoice == "scissors") {
     console.log("You lose! Scissors beats Paper!");
     computerCounter++;
     updateStats();
-    return "You lose! Scissors beats Paper!";
+    arenaTextFill("You lose! Scissors beats Paper!");
   } else if (playerChoice == "paper" && computerChoice == "rock") {
     console.log("You win! Paper beats Rock!");
     playerCounter++;
     updateStats();
-    return "You win! Paper beats Rock!";
+    arenaTextFill("You win! Paper beats Rock!");
   } else if (playerChoice == "scissors" && computerChoice == "rock") {
     console.log("You lose! Rock beats Scissors!");
     computerCounter++;
     updateStats();
-    return "You lose! Rock beats Scissors!";
+    arenaTextFill("You lose! Rock beats Scissors!");
   } else if (playerChoice == "rock" && computerChoice == "paper") {
     console.log("You lose! Paper beats Rock!");
     computerCounter++;
     updateStats();
-    return "You lose! Paper beats Rock!";
+    arenaTextFill("You lose! Paper beats Rock!");
   } else if (playerChoice == "scissors" && computerChoice == "paper") {
     console.log("You win! Scissors beats Paper!");
     playerCounter++;
     updateStats();
-    return "You win! Scissors beats Paper!";
+    arenaTextFill("You win! Scissors beats Paper!");
   } else if (playerChoice == computerChoice) {
     console.log("Tie!");
-    return "Tie!";
+    arenaTextFill("Tie!");
   } else console.log("Error, try again!");
 }
 
+// inner text for arena
+const refreshedTextDiv = document.createElement("div");
+
+const counterDiv = document.querySelector(".counter");
+const arenaDiv = document.querySelector(".arena");
+
+function arenaTextFill(arenaText) {
+  refreshedTextDiv.classList.add("text", "fade");
+  arenaDiv.removeChild(arenaDiv.firstElementChild);
+  arenaDiv.insertBefore(refreshedTextDiv, counterDiv);
+  refreshedTextDiv.innerText = arenaText;
+  requestAnimationFrame(() => {
+    refreshedTextDiv.classList.remove("fade");
+  });
+}
+
+// create computer choice buttons
 const rock = document.createElement("div");
 const rockImg = document.createElement("button");
 rockImg.classList.add("rock");
+rockImg.classList.add("computerChoiceInArena");
 rock.appendChild(rockImg);
 
 const paper = document.createElement("div");
 const paperImg = document.createElement("button");
 paperImg.classList.add("paper");
+paperImg.classList.add("computerChoiceInArena");
 paper.appendChild(paperImg);
 
 const scissors = document.createElement("div");
 const scissorsImg = document.createElement("button");
 scissorsImg.classList.add("scissors");
+scissorsImg.classList.add("computerChoiceInArena");
 scissors.appendChild(scissorsImg);
-
-arenaDiv = document.getElementsByClassName(".arena");
 
 function game() {
   if (computerChoice == "rock") {
@@ -84,7 +102,7 @@ function game() {
 function rockFunc() {
   playerChoice = "rock";
   console.log(playerChoice + " (player)");
-  arenaDiv.innerHTML = oneRound();
+  oneRound();
   console.log(playerCounter + " (player)");
   console.log(computerCounter + " (comp)");
 }
@@ -92,7 +110,7 @@ function rockFunc() {
 function paperFunc() {
   playerChoice = "paper";
   console.log(playerChoice + " (player)");
-  arenaDiv.innerHTML = oneRound();
+  oneRound();
   console.log(playerCounter + " (player)");
   console.log(computerCounter + " (comp)");
 }
@@ -100,13 +118,13 @@ function paperFunc() {
 function scissorsFunc() {
   playerChoice = "scissors";
   console.log(playerChoice + " (player)");
-  arenaDiv.innerHTML = oneRound();
+  oneRound();
   console.log(playerCounter + " (player)");
   console.log(computerCounter + " (comp)");
 }
 
 function removeChild() {
-  document.querySelector(".computer").innerHTML = "";
+  document.querySelector(".computer").innerText = "";
 }
 //
 //
@@ -144,34 +162,65 @@ function updateStats() {
   endGame();
 }
 
-//
-
+// winning screen
 const winScreen = document.createElement("div");
-winScreen.style.width = "100vw";
-winScreen.style.height = "100vh";
-winScreen.style.position = "absolute";
-winScreen.style.zIndex = "9999";
-winScreen.style.backgroundColor = "white";
+winScreen.classList.add("winScreen");
 
-winScreen.textContent = "You win! Congratulations!";
-
+// losing screen
 const loseScreen = document.createElement("div");
-loseScreen.style.width = "100vw";
-loseScreen.style.height = "100vh";
-loseScreen.style.position = "absolute";
-loseScreen.style.zIndex = "9999";
-loseScreen.style.backgroundColor = "white";
+loseScreen.classList.add("loseScreen");
 
-loseScreen.textContent = "You lose! Loser!";
+const winPara = document.createElement("p");
+winPara.textContent = "You win! Congratulations!";
+winScreen.appendChild(winPara);
+
+const losePara = document.createElement("p");
+losePara.textContent = "You lose! Loser!";
+loseScreen.appendChild(losePara);
+
+// lose/win button
+const repeatButtonWin = document.createElement("button");
+repeatButtonWin.classList.add("repeat");
+repeatButtonWin.textContent = "Rematch!";
+
+const repeatButtonLose = document.createElement("button");
+repeatButtonLose.classList.add("repeat");
+repeatButtonLose.textContent = "Rematch!";
+
+winScreen.appendChild(repeatButtonWin);
+loseScreen.appendChild(repeatButtonLose);
 
 function endGame() {
   if (playerCounter + computerCounter === 5) {
     if (playerCounter > computerCounter) {
-      document.querySelector("body").appendChild(winScreen);
-      console.log("yesss");
+      document.body.prepend(winScreen);
     } else if (playerCounter < computerCounter) {
-      document.querySelector("body").appendChild(loseScreen);
-      console.log("noooo");
+      document.body.prepend(loseScreen);
     }
   }
+}
+
+// repeat button
+repeatButtonWin.addEventListener("click", backToStart);
+repeatButtonWin.addEventListener("click", resetStats);
+repeatButtonLose.addEventListener("click", backToStart);
+repeatButtonLose.addEventListener("click", resetStats);
+
+function backToStart() {
+  if (document.body.contains(winScreen)) {
+    document
+      .querySelector("body")
+      .removeChild(document.querySelector(".winScreen"));
+  } else if (document.body.contains(loseScreen)) {
+    document
+      .querySelector("body")
+      .removeChild(document.querySelector(".loseScreen"));
+  }
+}
+
+function resetStats() {
+  playerCounter = 0;
+  computerCounter = 0;
+  updateStats();
+  arenaTextFill("");
 }

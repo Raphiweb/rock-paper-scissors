@@ -1,17 +1,33 @@
 /* button design */
-button {
+.gameButton {
   width: 175px;
   height: 175px;
   border: 15px solid rgba(255, 255, 255, 0);
   border-radius: 100px;
   transition: 0.075s ease;
-  margin: 10px;
+  margin: 22px;
   padding: 0;
+  flex: 0 0 auto;
 }
 
-button:active {
+.gameButton:active {
   transform: scale(1.1);
-  border: 10px solid rgba(255, 255, 0, 0.85);
+  border: 10px solid rgba(0, 255, 21, 0.664);
+}
+
+.gameButton:hover {
+  background-color: #585858;
+  cursor: pointer;
+}
+
+.computerChoiceInArena {
+  width: 175px;
+  height: 175px;
+  border: 15px solid rgba(255, 255, 255, 0);
+  border-radius: 100px;
+  margin: 10px;
+  padding: 0;
+  flex: 0 0 auto;
 }
 
 .rock {
@@ -34,42 +50,127 @@ button:active {
   background-repeat: no-repeat;
   background-position: center;
 }
+
 /* */
 
 body {
   background-color: #1a1a1b;
   color: rgb(215, 218, 220);
   text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: "Cormorant SC", serif;
+}
+
+header {
+  height: 15vh;
+}
+
+footer {
+  height: 5vh;
+  font-size: 18px;
+  margin-top: 25px;
+}
+
+footer a {
+  text-decoration: none;
+  color: rgb(215, 218, 220);
+}
+
+footer img {
+  max-height: 15px;
+}
+
+h1 {
+  font-size: 36px;
 }
 
 .computer {
-  min-height: 30vh;
+  height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .arena {
-  height: 15vh;
+  height: 20vh;
   display: flex;
   flex-wrap: wrap;
-
   justify-content: center;
 }
 
 .text {
   width: 100vw;
+  height: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: underline;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s ease;
+  will-change: opacity;
 }
 
+.fade {
+    opacity: 0;
+}   
+
 .counter {
-  background-color: red;
-  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #585858;
+  font-weight: bold;
+  width: 250px;
   height: 50px;
+  border-radius: 25px;
+}
+
+.cou
+opacity: 0.5;nter p {
+  font-size: 20px;
 }
 
 .player {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 30vh;
+  height: 30vh;
+}
+
+/* losing/winning screen */
+.winScreen,
+.loseScreen {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  background-color: #1a1a1bd9;
+  font-size: 46px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+}
+
+.repeat {
+  width: 175px;
+  height: 75px;
+  color: #1a1a1b;
+  font-family: "Cormorant SC", serif;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: 0.075s ease;
+}
+
+.repeat:active {
+  transform: scale(1.1);
+  border: 10px solid rgba(255, 0, 0, 0.85);
+}
+
+.repeat:hover {
+  cursor: pointer;
 }

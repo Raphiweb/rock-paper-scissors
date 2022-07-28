@@ -6,20 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="./scriptNew.js" defer></script>
   </head>
   <body>
-    <h1>Rock, Paper or Scissors?</h1>
-    <h2>chose wisely and win against the computer in a best of five</h2>
-    <div class="computer"></div></div>
+    <header>
+      <h1>Rock, Paper or Scissors?</h1>
+      <h2>chose wisely and win against the computer in a best of five</h2>
+    </header>
+    <div class="computer"></div>
     <div class="arena">
       <div class="text"></div>
       <div class="counter"><p id="score"></p></div>
     </div>
     <div class="player">
-      <button class="rock"></button>
-      <button class="paper"></button>
-      <button class="scissors"></button>
+      <button class="gameButton rock"></button>
+      <button class="gameButton paper"></button>
+      <button class="gameButton scissors"></button>
     </div>
+    <footer>
+      Copyright &copy; 2022
+      <a href="https://github.com/Raphiweb"
+        >Raphiweb <img src="images/githublogo.png" alt=""
+      /></a>
+    </footer>
   </body>
 </html>
