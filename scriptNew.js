@@ -11,42 +11,34 @@ function getComputerChoice() {
   } else if (num === 1) {
     computerChoice = "paper";
   } else computerChoice = "scissors";
-  console.log(computerChoice);
 }
 
 function oneRound() {
   if (playerChoice == "rock" && computerChoice == "scissors") {
-    console.log("You win! Rock beats Scissors!");
     playerCounter++;
     updateStats();
     arenaTextFill("You win! Rock beats Scissors!");
   } else if (playerChoice == "paper" && computerChoice == "scissors") {
-    console.log("You lose! Scissors beats Paper!");
     computerCounter++;
     updateStats();
-    arenaTextFill("You lose! Scissors beats Paper!");
+    arenaTextFill("You lose! Scissors beat Paper!");
   } else if (playerChoice == "paper" && computerChoice == "rock") {
-    console.log("You win! Paper beats Rock!");
     playerCounter++;
     updateStats();
     arenaTextFill("You win! Paper beats Rock!");
   } else if (playerChoice == "scissors" && computerChoice == "rock") {
-    console.log("You lose! Rock beats Scissors!");
     computerCounter++;
     updateStats();
     arenaTextFill("You lose! Rock beats Scissors!");
   } else if (playerChoice == "rock" && computerChoice == "paper") {
-    console.log("You lose! Paper beats Rock!");
     computerCounter++;
     updateStats();
     arenaTextFill("You lose! Paper beats Rock!");
   } else if (playerChoice == "scissors" && computerChoice == "paper") {
-    console.log("You win! Scissors beats Paper!");
     playerCounter++;
     updateStats();
-    arenaTextFill("You win! Scissors beats Paper!");
+    arenaTextFill("You win! Scissors beat Paper!");
   } else if (playerChoice == computerChoice) {
-    console.log("Tie!");
     arenaTextFill("Tie!");
   } else console.log("Error, try again!");
 }
@@ -101,26 +93,17 @@ function game() {
 
 function rockFunc() {
   playerChoice = "rock";
-  console.log(playerChoice + " (player)");
   oneRound();
-  console.log(playerCounter + " (player)");
-  console.log(computerCounter + " (comp)");
 }
 
 function paperFunc() {
   playerChoice = "paper";
-  console.log(playerChoice + " (player)");
   oneRound();
-  console.log(playerCounter + " (player)");
-  console.log(computerCounter + " (comp)");
 }
 
 function scissorsFunc() {
   playerChoice = "scissors";
-  console.log(playerChoice + " (player)");
   oneRound();
-  console.log(playerCounter + " (player)");
-  console.log(computerCounter + " (comp)");
 }
 
 function removeChild() {
