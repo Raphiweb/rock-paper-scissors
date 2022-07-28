@@ -31,21 +31,21 @@
 }
 
 .rock {
-  background-image: url(/images/rock.png);
+  background-image: url(./images/rock.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .paper {
-  background-image: url(/images/paper.png);
+  background-image: url(./images/paper.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .scissors {
-  background-image: url(/images/scissors.png);
+  background-image: url(./images/scissors.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
